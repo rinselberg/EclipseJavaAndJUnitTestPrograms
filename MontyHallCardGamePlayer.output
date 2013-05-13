@@ -1,0 +1,52 @@
+Your balance is 0
+Place your wager. Input any number from 0 upwards:
+100
+If you pick the Joker, you will win 100
+If you pick or settle for the Ace, you will win 10
+If you pick the Queen, you will lose 100
+Card #1 is face down
+Card #2 is face down
+Card #3 is face down
+Try to find the Joker
+Pick a card by entering 1, 2 or 3:
+1
+Card #1 is face down
+Card #2 is face down
+Card #3 is the Queen
+You picked Card #1
+Do you want to go with Card #2 instead? Input 1 for yes or 0 for no:
+1
+Card #1 is the Joker
+Card #2 is the Ace
+Card #3 is the Queen
+Second Prize--you selected the Ace
+Your new balance is 10
+Do you want to play again? Input 1 for yes or 0 for no:
+1
+Your balance is 10
+Place your wager. Input any number from 0 upwards:
+100
+If you pick the Joker, you will win 100
+If you pick or settle for the Ace, you will win 10
+If you pick the Queen, you will lose 100
+Card #1 is face down
+Card #2 is face down
+Card #3 is face down
+Try to find the Joker
+Pick a card by entering 1, 2 or 3:
+3
+Card #1 is the Queen
+Card #2 is face down
+Card #3 is face down
+You picked Card #3
+Do you want to go with Card #2 instead? Input 1 for yes or 0 for no:
+0
+Card #1 is the Queen
+Card #2 is the Joker
+Card #3 is the Ace
+Second Prize--you selected the Ace
+Your new balance is 20
+Do you want to play again? Input 1 for yes or 0 for no:
+0
+Your balance is 20
+Game has ended successfully
