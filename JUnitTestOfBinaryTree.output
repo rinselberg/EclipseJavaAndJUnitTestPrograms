@@ -1,0 +1,32 @@
+starting main
+setUp
+testBt
+tearDown
+setUp
+testBtAddNode
+tearDown
+setUp
+testPopulateFromLinkedList
+tearDown
+setUp
+testPopulateBtFromSequenceOfValues
+tearDown
+setUp
+testCompareTo
+tearDown
+setUp
+testTraverseTree
+tearDown
+setUp
+testCountNode
+tearDown
+setUp
+testCountLeaf
+tearDown
+setUp
+testPrintFrontToBack
+tearDown
+Was JUnitTest successful? true
+How many tests were there? 9
+Number of errors = 0
+Number of failures = 0
