@@ -1,0 +1,87 @@
+<project name="junit#3" default="zip" basedir=".">
+
+  <!-- set global properties for this build -->
+  <property name="src" location="src"/>
+  <property name="lib" location="lib"/>
+  <property name="build" location="build"/>
+  <property name="classes" location="${build}/classes"/>
+  <property name="test" location="${build}/test"/>
+  <property name="dist"  location="dist"/>
+
+  <!-- environmental variables -->
+  <!-- see .bash_profile -->
+
+  <!-- define compile.classpath to include the JUnit jar -->
+  <path id="compile.classpath">
+    <fileset dir="${lib}">
+      <include name="*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- define test.classpath -->
+  <path id="test.classpath">
+    <pathelement location="${classes}"/>
+  </path>
+
+  <target name="init" depends="clean">
+    <!-- Create additional directory structure for the project -->
+    <mkdir dir="${build}"/>
+    <mkdir dir="${classes}"/>
+    <mkdir dir="${test}"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <!-- Compile the java code from ${src} into ${classes} -->
+    <javac srcdir="${src}" destdir="${classes}">
+      <classpath refid="compile.classpath"/>
+    </javac>
+  </target>
+
+  <target name="dist" depends="compile">
+    <!-- Create the distribution directory -->
+    <mkdir dir="${dist}"/>
+    <tstamp/>
+    <!-- Remove manifest. This jar will end up on the classpath of junit#3.jar -->
+    <jar jarfile="${dist}/junit#3-${DSTAMP}.jar" basedir="${classes}"/>
+    <!-- Fancy task that takes the pain out of creating properly formatted manifest value -->
+    <manifestclasspath property="mf.classpath" jarfile="${dist}/junit#3.jar">
+        <classpath>
+            <fileset dir="${dist}" includes="*.jar"/>
+        </classpath>
+    </manifestclasspath>
+    <!-- Put everything in ${classes} into the junit#3.jar file -->
+    <!-- This is the executable jar -->
+    <jar jarfile="${dist}/junit#3.jar" basedir="${classes}">
+      <zipfileset src="${lib}/junit-3.8.2.jar"/>
+      <manifest>
+        <attribute name="Main-Class" value="junitAssignment3.JUnitTest"/>
+  <attribute name="Class-Path" value="mf.classpath"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="test" depends="dist">
+    <junit fork="yes">
+      <classpath refid="test.classpath"/>
+      <classpath refid="compile.classpath"/>
+      <formatter type="brief" usefile="true" extension=".output"/>
+      <!-- I would prefer to have the output file in ${test} directory, but cannot get that to work -->
+      <test name="junitAssignment3.JUnitTest" outfile="JUnitTest"/>
+    </junit>
+  </target>
+
+  <target name="run" depends="test">
+    <!-- output file in the project's base directory, for consistency with the junit task -->
+    <java jar="${dist}/${ant.project.name}.jar" fork="true" output="RunFromJar.output"/>
+  </target>
+
+  <target name="zip" depends="run">
+    <zip destfile="../RonaldInselbergJUnitAssignment#3.zip" basedir="."/>
+  </target>
+
+  <target name="clean">
+    <!-- Delete the ${build} and ${dist} directory trees -->
+    <delete dir="${build}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>
